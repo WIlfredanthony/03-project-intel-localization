@@ -1,0 +1,152 @@
+/* Add your CSS here */
+
+/* Blue background for the header */
+.blue-header {
+  background-color: #0071c5; /* Intel blue */
+  color: white; /* White text for contrast */
+  padding: 30px 0; /* Space above and below */
+}
+
+/* Center the content inside the header */
+.header-content {
+  text-align: center; /* Center all text and images */
+  max-width: 600px;   /* Limit width for better appearance */
+  margin: 0 auto;     /* Center the box horizontally */
+}
+
+/* Style the Intel logo */
+.intel-logo {
+  width: 100px;       /* Set logo width */
+  display: block;     /* Make the image a block element */
+  margin: 0 auto 20px auto; /* Center and add space below */
+}
+
+/* Style the main heading */
+.header-content h1 {
+  margin: 0 0 10px 0; /* Remove top margin, add space below */
+  font-size: 2em;     /* Make the title larger */
+}
+
+/* Style the description paragraph */
+.header-content p {
+  margin: 0;          /* Remove default margin */
+  font-size: 1.1em;   /* Slightly larger text */
+}
+
+/* Use a clean, modern font for the whole page */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif; /* Intel-like font */
+  background: #e9eef2; /* Light background for Intel feel */
+  margin: 0;
+  padding: 0;
+}
+
+/* Make all images in the timeline cards the same size */
+section img {
+  width: 250px;   /* Set image width */
+  height: 100px;  /* Set image height */
+  object-fit: cover; /* Crop image to fit the box */
+  display: block;    /* Make images block elements */
+  margin: 0 auto 10px auto; /* Center images and add space below */
+}
+
+/* Timeline section uses Flexbox for horizontal scrolling */
+section {
+  display: flex;              /* Use Flexbox to arrange cards in a row */
+  flex-direction: row;        /* Arrange cards horizontally */
+  overflow-x: auto;           /* Enable horizontal scrolling if needed */
+  gap: 20px;                  /* Space between cards */
+  padding: 20px 0;            /* Space above and below the timeline */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
+}
+
+/* Make each card a snap point */
+section > div {
+  background: #f4f4f4;        /* Light background for cards */
+  border-radius: 8px;         /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Soft shadow */
+  padding: 16px;              /* Space inside the card */
+  min-width: 270px;           /* Minimum width for each card */
+  max-width: 270px;           /* Maximum width for each card */
+  flex: 0 0 auto;             /* Prevent cards from shrinking or growing */
+  text-align: center;         /* Center text inside cards */
+  position: relative;         /* Needed for absolute positioning of details */
+  transition: 
+    box-shadow 0.3s cubic-bezier(.4,2,.6,1), 
+    transform 0.3s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;           /* Show pointer on hover */
+  overflow: hidden;          /* Hide overflow for details */
+  scroll-snap-align: start; /* Snap each card to the start of the scroll area */
+}
+
+/* Style headings for cards */
+section > div h2 {
+  color: #0071c5; /* Intel blue for years */
+  font-size: 1.5em;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+section > div h3 {
+  color: #222; /* Dark text for titles */
+  font-size: 1.1em;
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+/* Style card text */
+section > div p {
+  color: #333; /* Slightly dark text for readability */
+  font-size: 1em;
+  margin: 0 0 5px 0;
+  line-height: 1.4;
+}
+
+/* Add spacing between image and text */
+section > div img {
+  margin-bottom: 10px;
+}
+
+/* Hidden details inside each card */
+section > div .card-details {
+  display: none; /* Hide by default */
+  background: rgba(0,113,197,0.95); /* Intel blue with transparency */
+  color: #fff; /* White text */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 16px;
+  z-index: 2;
+  text-align: left;
+  font-size: 0.98em;
+  border-radius: 8px;
+}
+
+/* Show details on hover */
+section > div:hover .card-details,
+section > div:focus .card-details {
+  display: block;
+}
+
+/* Card hover visual feedback */
+section > div:hover,
+section > div:focus {
+  box-shadow: 0 8px 24px rgba(0,113,197,0.18), 0 1.5px 6px rgba(0,0,0,0.08); /* Stronger shadow */
+  transform: translateY(-8px) scale(1.05) rotate(-1deg); /* Lift, scale, and slight rotate */
+  transition: 
+    box-shadow 0.3s cubic-bezier(.4,2,.6,1), 
+    transform 0.3s cubic-bezier(.4,2,.6,1); /* Smooth transition */
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 700px) {
+  section {
+    flex-direction: column;   /* Stack cards vertically */
+    gap: 16px;                /* Less space between cards */
+    overflow-x: visible;      /* No horizontal scroll needed */
+  }
+  section > div {
+    max-width: 100%;          /* Cards take full width */
+    min-width: 0;
+  }
+}
